@@ -2,7 +2,7 @@
     <div class="container">
         <div class="tittle-container">
             <h1 class="tittle-container__tittle">TODO</h1>
-            <img :src="require(`../images/${logo}`)"  alt="" role="button" @click="cambiarmodo"  class="tittle-container__image">
+            <img :src="require(`../images/${logo}`)"  :alt="`${logo}`" role="button" @click="cambiarmodo"  class="tittle-container__image">
         </div>
         <form @submit.prevent="ingresartarea" class="container__form">
                 <input type='checkbox' name='thing' value='valuable' id="thing" v-model="estado"/>
@@ -35,7 +35,7 @@ export default {
         const estado = ref(false)   
         const tareas = inject('tareas')
         const mode = inject('mode')
-        const logo = ref('icon-moon.svg')
+        const logo = ref('icon-sun.svg')
 
 
         const ingresartarea = () =>{
@@ -63,11 +63,11 @@ export default {
         const cambiarmodo = () =>{
             if(mode.value === 'dark'){
                 mode.value = 'light'
-                logo.value = 'icon-sun.svg'
+                logo.value = 'icon-moon.svg'
             }
             else{
                 mode.value = 'dark'
-                logo.value = 'icon-moon.svg'
+                logo.value = 'icon-sun.svg'
             }
         }
         return {texto, estado, tareas, ingresartarea, cambiarmodo, logo}
